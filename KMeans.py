@@ -3,18 +3,25 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+import time
+
 # import pylab
 
 df = pd.read_excel('120_data.xlsx', header=None)
 X = df.to_numpy()
 
 # KMeans 演算法
+start = time.time()
 kmeans_fit = cluster.KMeans(n_clusters = 3).fit(X)
+
 
 # 印出分群結果
 cluster_labels = kmeans_fit.labels_
 kmeans_centers = kmeans_fit.cluster_centers_
 print('kmeans_centers:\n', kmeans_centers)
+end = time.time()
+time_keams = end - start
+print('time_kmeams:', time_keams)
 
 # plot
 fig = plt.figure()
